@@ -22,6 +22,9 @@ public class DinerList1 extends AppCompatActivity {
         setContentView(R.layout.activity_diner_list1);
         TextView txt_title = (TextView) findViewById(R.id.txt_title);
         final Button btn_back = (Button) findViewById(R.id.btn_back);
+        final Button btn_haksik = (Button) findViewById(R.id.btn_haksik);
+        final Button btn_gyosik = (Button) findViewById(R.id.btn_gyosik);
+        final Button btn_gisik = (Button) findViewById(R.id.btn_gisik);
 
         Intent intent = getIntent(); /*데이터 수신*/
         String title = intent.getExtras().getString("title");
@@ -35,6 +38,12 @@ public class DinerList1 extends AppCompatActivity {
         AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+
+        if(title.equals("~5000")){
+            btn_gisik.setVisibility(View.VISIBLE);
+            btn_gyosik.setVisibility(View.VISIBLE);
+            btn_haksik.setVisibility(View.VISIBLE);
+        }
 
 
         btn_back.setOnClickListener(new Button.OnClickListener() {
