@@ -1,8 +1,10 @@
 package kr.co.hwakjjin.myapplication;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -34,6 +37,7 @@ public class DinerList1 extends AppCompatActivity {
         final Button btn_haksik = (Button) findViewById(R.id.btn_haksik);
         final Button btn_gyosik = (Button) findViewById(R.id.btn_gyosik);
         final Button btn_gisik = (Button) findViewById(R.id.btn_gisik);
+        final Button btn_sort = (Button) findViewById(R.id.btn_sort);
 
         ConstraintLayout layout_stdFood = (ConstraintLayout) findViewById(R.id.btnContainer);
 
@@ -80,6 +84,38 @@ public class DinerList1 extends AppCompatActivity {
             layout_stdFood.setVisibility(View.GONE);
         }
 
+        btn_sort.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String [] items = {"평점순", "가격순", "리뷰추천순"};
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(DinerList1.this);
+
+                builder.setTitle("정렬기준 선택");
+                int checkedItem = 0;
+                CharSequence text = btn_sort.getText();
+                if ("평점순".equals(text)) {
+                    checkedItem = 0;
+                } else if ("가격순".equals(text)) {
+                    checkedItem = 1;
+                } else if ("리뷰추천순".equals(text)) {
+                    checkedItem = 2;
+                } else {
+                    throw new IllegalStateException("Unexpected value: " + btn_sort.getText());
+                }
+                builder.setSingleChoiceItems(items, checkedItem, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        btn_sort.setText(items[which]);
+                        sortListData(which);
+                        dialog.dismiss(); // 누르면 바로 닫히는 형태
+                    }
+
+                });
+                builder.create();
+                builder.show();
+            }
+        });
 
         btn_back.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -100,6 +136,13 @@ public class DinerList1 extends AppCompatActivity {
         mList.add(new MenuData(R.drawable.cheesestick, "치즈스틱 - 3pop", 4.0f, 5000, "park", "asdasdasdas", 5));
         mList.add(new MenuData(R.drawable.gyojamandu, "교자만두시발새기ㅏ듬ㄴㄹㄴㅇ - 존나긴이름이다시발놈드라", 4.0f, 5000, "john", "afdffds", 13));
         mList.add(new MenuData(R.drawable.kimchirice, "김치두루치기 덮밥 - 3pop", 4.0f, 5000, "igi", "00asdf8ags", 45));
+
+    }
+
+    /*
+     * 리스트아이템 정렬하는 함수
+     */
+    public void sortListData(int sortType){
 
     }
 }
