@@ -3,18 +3,18 @@ package kr.co.hwakjjin.myapplication;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -27,6 +27,8 @@ import java.util.ArrayList;
 public class DinerList1 extends AppCompatActivity {
 
     ArrayList<MenuData> mList;
+    private WebView mWebView; // 웹뷰 선언
+    private WebSettings mWebSettings; //웹뷰세팅
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +77,30 @@ public class DinerList1 extends AppCompatActivity {
 
         // 애드몹배너광고 //
 
+        assert title != null;
         if(title.equals("~5000")){
             layout_stdFood.setVisibility(View.VISIBLE);
+            btn_haksik.setOnClickListener(new Button.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://m.soongguri.com/"));
+                    startActivity(intent);
+                }
+            });
+            btn_gyosik.setOnClickListener(new Button.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://m.soongguri.com/"));
+                    startActivity(intent);
+                }
+            });
+            btn_gisik.setOnClickListener(new Button.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://m.soongguri.com/"));
+                    startActivity(intent);
+                }
+            });
         } else{
             btn_gisik.setVisibility(View.INVISIBLE);
             btn_gyosik.setVisibility(View.INVISIBLE);
