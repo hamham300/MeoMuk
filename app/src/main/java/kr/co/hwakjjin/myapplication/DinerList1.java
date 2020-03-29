@@ -35,6 +35,8 @@ public class DinerList1 extends AppCompatActivity {
         final Button btn_gyosik = (Button) findViewById(R.id.btn_gyosik);
         final Button btn_gisik = (Button) findViewById(R.id.btn_gisik);
 
+        ConstraintLayout layout_stdFood = (ConstraintLayout) findViewById(R.id.btnContainer);
+
         this.setListData(); // 데이터 로드 form server?, firebase?, 내장 데이터?
 
         // 리스트뷰 설정 //
@@ -64,19 +66,18 @@ public class DinerList1 extends AppCompatActivity {
             }
         });
         AdView mAdView = findViewById(R.id.adView);
-
-        mAdView.setVisibility(View.INVISIBLE);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
         // 애드몹배너광고 //
 
         if(title.equals("~5000")){
-
+            layout_stdFood.setVisibility(View.VISIBLE);
         } else{
             btn_gisik.setVisibility(View.INVISIBLE);
             btn_gyosik.setVisibility(View.INVISIBLE);
             btn_haksik.setVisibility(View.INVISIBLE);
+            layout_stdFood.setVisibility(View.GONE);
         }
 
 

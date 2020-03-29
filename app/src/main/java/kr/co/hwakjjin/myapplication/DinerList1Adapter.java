@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class DinerList1Adapter extends BaseAdapter {
@@ -47,6 +49,8 @@ public class DinerList1Adapter extends BaseAdapter {
 
         RatingBar rating = (RatingBar)view.findViewById(R.id.rating);
 
+        TextView txt_number = (TextView)view.findViewById(R.id.txt_number);
+
         TextView txt_menu = (TextView)view.findViewById(R.id.txt_menu);
         TextView txt_rate = (TextView)view.findViewById(R.id.txt_rate);
         TextView txt_price = (TextView)view.findViewById(R.id.txt_price);
@@ -57,6 +61,7 @@ public class DinerList1Adapter extends BaseAdapter {
         String str_rate = mList.get(position).getRate() + "/ 5.0";
         String str_bestReview = mList.get(position).getBestReviewer() + " : " + mList.get(position).getBestReview();  // 이름 : 리뷰
 
+        txt_number.setText(String.valueOf(position+1)+".");
 
         img_food.setImageResource(mList.get(position).getFoodPic());
         rating.setRating(mList.get(position).getRate());
