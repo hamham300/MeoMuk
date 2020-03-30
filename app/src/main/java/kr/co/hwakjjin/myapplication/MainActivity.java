@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         final Button btn_6to7 = (Button) findViewById(R.id.btn_6to7);
         final Button btn_over7 = (Button) findViewById(R.id.btn_over7);
         final LinearLayout layout_priceSelect = (LinearLayout) findViewById(R.id.price_select_layout);
-
+        final LinearLayout layout_menuSelect = (LinearLayout) findViewById(R.id.menu_select_layout);
 
         btn_price.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -34,9 +34,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btn_menu.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                layout_menuSelect.setVisibility(View.VISIBLE);
+                btn_back.setVisibility(View.VISIBLE);
+                btn_menu.setVisibility(View.INVISIBLE);
+                btn_price.setVisibility(View.INVISIBLE);
+            }
+        });
+
         btn_back.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View v) {
+                layout_menuSelect.setVisibility(View.INVISIBLE);
                 layout_priceSelect.setVisibility(View.INVISIBLE);
                 btn_back.setVisibility(View.INVISIBLE);
                 btn_menu.setVisibility(View.VISIBLE);
