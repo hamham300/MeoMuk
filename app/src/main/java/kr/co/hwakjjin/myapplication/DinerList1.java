@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -97,7 +96,7 @@ public class DinerList1 extends AppCompatActivity {
             btn_gisik.setOnClickListener(new Button.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://m.soongguri.com/"));
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://ssudorm.ssu.ac.kr:444/SShostel/mall_main.php?viewform=B0001_foodboard_list&board_no=1"));
                     startActivity(intent);
                 }
             });
