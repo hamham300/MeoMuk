@@ -54,6 +54,9 @@ public class DinerList1 extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // 상세화면(지도정보, 리뷰시스템 등등) 호출 -> 액티비티? 다이얼로그?
+                Intent intent = new Intent(getApplicationContext(),MenuDetail.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_top,R.anim.slide_top);
             }
         });
 
