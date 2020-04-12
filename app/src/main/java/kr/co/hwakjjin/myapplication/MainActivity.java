@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         final LinearLayout layout_priceSelect = (LinearLayout) findViewById(R.id.price_select_layout);
         final LinearLayout layout_menuSelect = (LinearLayout) findViewById(R.id.menu_select_layout);
 
+        final Button btn_login = (Button) findViewById(R.id.test_btn);
         btn_price.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,6 +85,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),DinerList1.class);
                 intent.putExtra("title","7000 ~");
+                startActivity(intent);
+            }
+        });
+        btn_login.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                intent.putExtra("title","~5000");
                 startActivity(intent);
             }
         });
