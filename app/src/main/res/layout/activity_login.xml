@@ -11,7 +11,7 @@
         android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/splash_logo"/>
+        android:src="@drawable/main_logo"/>
 
     <LinearLayout
         android:id="@+id/signin_layout"
